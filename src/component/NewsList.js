@@ -27,7 +27,7 @@ const NewsList = () => {
             setLoading(true); //처음에 로딩중 ...true
 
             try{
-                const response = await axios.get('https://newsapi.org/v2/top-headlines?country=kr&apiKey=여기다발급받은앱키를넣는다');
+                // const response = await axios.get('https://newsapi.org/v2/top-headlines?country=kr&apiKey=여기다발급받은앱키를넣는다');
                 setArticles(response.data.articles);
             }catch (e){
 
