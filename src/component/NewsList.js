@@ -16,7 +16,12 @@ const NewsListBlock = styled.div`
   }
 `;
 
-
+/****  NewsList함수는 4번 실행된다
+  1. fetchData 호출시
+  2. state추적 --> setLoading 실행시 : 처음에 true로 setLoading될 때
+  2. state추적 --> setArticles 실행시 : 받아온 뉴스데이터 세팅할 때
+  2. state추적 --> setLoading 실행시 : 로딩 끝나서 false로 setLoading될 때
+*****/
 const NewsList = () => {
     const [articles, setArticles] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -27,7 +32,9 @@ const NewsList = () => {
             setLoading(true); //처음에 로딩중 ...true
 
             try{
-                // const response = await axios.get('https://newsapi.org/v2/top-headlines?country=kr&apiKey=여기다발급받은앱키를넣는다');
+                // const query = category === 'all'?
+
+                const response = await axios.get('https://newsapi.org/v2/top-headlines?country=kr&apiKey=efbd6784bb8b47e7ab9b28b78c6043a0');
                 setArticles(response.data.articles);
             }catch (e){
 
