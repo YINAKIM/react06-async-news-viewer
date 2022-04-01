@@ -22,28 +22,27 @@ const NewsListBlock = styled.div`
   2. state추적 --> setArticles 실행시 : 받아온 뉴스데이터 세팅할 때
   2. state추적 --> setLoading 실행시 : 로딩 끝나서 false로 setLoading될 때
 *****/
-const NewsList = () => {
+const NewsList = ({category}) => {
     const [articles, setArticles] = useState(null);
     const [loading, setLoading] = useState(false);
 
     // useEffect(() => {}, []); // 처음 렌더링 되는 시점에 API를 요청
     useEffect(() => {
+
         const fetchData = async () => {
             setLoading(true); //처음에 로딩중 ...true
-
             try{
-                // const query = category === 'all'?
-
-                const response = await axios.get('https://newsapi.org/v2/top-headlines?country=kr&apiKey=efbd6784bb8b47e7ab9b28b78c6043a0');
+                const query = category === 'all'? '' : `&category=${category}`;
+                const response = await axios.get(`https://newsapi.org/v2/top-headlines?country=kr${query}&apiKey=efbd6784bb8b47e7ab9b28b78c6043a0`);
                 setArticles(response.data.articles);
             }catch (e){
-
+                console.log(e);
             }
             setLoading(false);//로딩끝났으니까 false
         };
 
         fetchData();
-    }, []); // 처음 렌더링 되는 시점에 API를 요청
+    }, [category]); // 처음 렌더링 되는 시점에 API를 요청
 
     // 대기중일 때 ) loading:true
     if(loading){

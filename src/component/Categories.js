@@ -65,7 +65,7 @@ const Category = styled.div`
         &:hover {
           color:#3bc9db;
         }
-   `}일
+   `}
   
   // &+& 인접한 형제선택자에 사용
   &+&{
