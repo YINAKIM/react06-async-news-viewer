@@ -3,14 +3,12 @@ import axios from "axios";
 import NewsList from "./component/NewsList";
 import Categories from "./component/Categories";
 import { BrowserRouter, Routes, Route,} from "react-router-dom";
-import NewsPage from "./pages/NewsPage";
+import ReplyPage from "./pages/ReplyPage";
 
 const App = () => {
     return (
         <BrowserRouter>
-            <Routes>
-                <Route path=":/category?" element={<NewsPage/>} />
-            </Routes>
+                <Route path="/:number?" component={ReplyPage} />
         </BrowserRouter>
     );
 };
